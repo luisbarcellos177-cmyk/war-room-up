@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>The Revivalist Archive — Founding Access</title>
+    
+    <!-- Google Fonts: Cinzel para títulos, Lora para corpo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #141414;
+            --text-primary: #F5F2EB;
+            --text-secondary: #888888;
+            --accent-gold: #C9A961;
+            --accent-red: #8B1A1A;
+            --accent-red-hover: #A02020;
+            --border-subtle: #2A2A2A;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Lora', Georgia, serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* === BLOCO 1 — Cabeçalho de Confirmação === */
+        .confirmation-bar {
+            background-color: #0d2818;
+            color: #7BC97B;
+            text-align: center;
+            padding: 14px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            border-bottom: 1px solid #1a4028;
+        }
+        
+        .confirmation-bar::before {
+            content: "✓ ";
+            color: #7BC97B;
+            font-weight: 900;
+            margin-right: 8px;
+        }
+        
+        /* === Container Geral === */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* === BLOCO 2 — Hero / Headline === */
+        .hero {
+            text-align: center;
+            padding: 100px 24px 60px;
+        }
+        
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(36px, 6vw, 68px);
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            line-height: 1.1;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+        }
+        
+        .hero h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(22px, 3vw, 36px);
+            font-weight: 400;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+        }
+        
+        /* === BLOCO 3 — VSL / Vídeo === */
+        .video-section {
+            padding: 40px 24px 80px;
+        }
+        
+        .video-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--border-subtle);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        /* === BLOCO 4 — Título do Produto === */
+        .product-title {
+            text-align: center;
+            padding: 60px 24px 40px;
+            border-top: 1px solid var(--border-subtle);
+        }
+        
+        .product-title h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            margin-bottom: 24px;
+            color: var(--accent-gold);
+        }
+        
+        .product-title p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(18px, 2.2vw, 24px);
+            font-style: italic;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* === BLOCO 5 — Stack Visual / Módulos === */
+        .modules-section {
+            padding: 80px 24px;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+        
+        .module-card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            padding: 32px 20px;
+            text-align: center;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .module-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-4px);
+        }
+        
+        .module-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background-color: var(--accent-gold);
+            opacity: 0.15;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .module-number {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .module-title {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
+        
+        .module-figure {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .modules-includes {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: var(--bg-secondary);
+            border-left: 3px solid var(--accent-gold);
+        }
+        
+        .modules-includes h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .modules-includes ul {
+            list-style: none;
+        }
+        
+        .modules-includes li {
+            padding: 10px 0;
+            font-size: 16px;
+            color: var(--text-primary);
+        }
+        
+        .modules-includes li::before {
+            content: "▸ ";
+            color: var(--accent-gold);
+            margin-right: 12px;
+            font-weight: 700;
+        }
+        
+        /* === BLOCO 6 — Promessa de Transformação === */
+        .promise-section {
+            background-color: var(--bg-secondary);
+            padding: 100px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        
+        .promise-content {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        
+        .promise-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 2.5vw, 28px);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+        
+        .promise-content p:last-child {
+            color: var(--accent-gold);
+            font-style: italic;
+            margin-bottom: 0;
+        }
+        
+        /* === BLOCO 7 — CTA Primário === */
+        .cta-section {
+            text-align: center;
+            padding: 80px 24px 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(15px, 2vw, 18px);
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 24px 56px;
+            text-decoration: none;
+            border: 2px solid var(--accent-red);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(139, 26, 26, 0.4);
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent-red-hover);
+            border-color: var(--accent-red-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(139, 26, 26, 0.6);
+        }
+        
+        .cta-subtitle {
+            margin-top: 18px;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+        }
+        
+        /* === BLOCO 8 — Garantia === */
+        .guarantee-section {
+            padding: 60px 24px;
+            text-align: center;
+        }
+        
+        .guarantee-box {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 50px 40px;
+            border: 2px solid var(--accent-gold);
+            background-color: rgba(201, 169, 97, 0.04);
+        }
+        
+        .guarantee-title {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            color: var(--accent-gold);
+            margin-bottom: 24px;
+        }
+        
+        .guarantee-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--text-primary);
+            font-style: italic;
+        }
+        
+        /* === BLOCO 9 — FAQ === */
+        .faq-section {
+            padding: 80px 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-title {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            margin-bottom: 50px;
+            color: var(--accent-gold);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 24px 0;
+        }
+        
+        .faq-question {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        
+        .faq-question:hover {
+            color: var(--accent-gold);
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: 24px;
+            color: var(--accent-gold);
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            content: "−";
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-top: 18px;
+        }
+        
+        /* === BLOCO 11 — Link de Recusa === */
+        .decline-section {
+            text-align: center;
+            padding: 40px 24px 60px;
+        }
+        
+        .decline-link {
+            font-family: 'Lora', serif;
+            font-size: 14px;
+            color: var(--text-secondary);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transition: color 0.3s ease;
+        }
+        
+        .decline-link:hover {
+            color: var(--text-primary);
+        }
+        
+        /* === BLOCO 12 — Rodapé === */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border-subtle);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+        
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 8px;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* === Responsividade Mobile === */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 24px 40px;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .modules-includes {
+                padding: 30px 24px;
+            }
+            
+            .promise-section {
+                padding: 60px 24px;
+            }
+            
+            .cta-button {
+                padding: 20px 36px;
+                font-size: 14px;
+                letter-spacing: 0.1em;
+            }
+            
+            .guarantee-box {
+                padding: 36px 24px;
+            }
+            
+            .faq-section {
+                padding: 60px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- BLOCO 1: Confirmação -->
+    <div class="confirmation-bar">
+        YOUR ORDER IS CONFIRMED — ACCESS DETAILS SENT TO YOUR EMAIL
+    </div>
+    
+    <!-- BLOCO 2: Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>WAIT — BEFORE YOU GO.</h1>
+            <h2>One final door remains open.</h2>
+        </div>
+    </section>
+    
+    <!-- BLOCO 3: VSL -->
+    <section class="video-section">
+        <div class="container">
+            <div class="video-wrapper">
+                <!-- SUBSTITUA O SRC ABAIXO PELO LINK DO SEU VSL -->
+                <!-- Para YouTube: https://www.youtube.com/embed/SEU-VIDEO-ID?rel=0&modestbranding=1 -->
+                <!-- Para Vimeo: https://player.vimeo.com/video/SEU-VIDEO-ID -->
+                <!-- Para Panda Video: use o código embed fornecido pela plataforma -->
+                <iframe 
+                    src="https://www.youtube.com/embed/SEU-VIDEO-ID?rel=0&modestbranding=1&showinfo=0" 
+                    allowfullscreen
+                    allow="autoplay; encrypted-media">
+                </iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 4: Título do Produto -->
+    <section class="product-title">
+        <div class="container">
+            <h2>THE REVIVALIST ARCHIVE</h2>
+            <p>Four cinematic masterclasses on the hidden disciplines of Wesley, Tozer, Spurgeon, and Bounds.</p>
+        </div>
+    </section>
+    
+    <!-- BLOCO 5: Stack Visual -->
+    <section class="modules-section">
+        <div class="container">
+            <div class="modules-grid">
+                
+                <div class="module-card">
+                    <div class="module-icon"></div>
+                    <div class="module-number">MODULE I</div>
+                    <div class="module-title">THE METHOD<br>OF FIRE</div>
+                    <div class="module-figure">John Wesley</div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-icon"></div>
+                    <div class="module-number">MODULE II</div>
+                    <div class="module-title">THE ANATOMY<br>OF A PROPHET</div>
+                    <div class="module-figure">A.W. Tozer</div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-icon"></div>
+                    <div class="module-number">MODULE III</div>
+                    <div class="module-title">THE WEIGHT<br>OF THE PULPIT</div>
+                    <div class="module-figure">Charles Spurgeon</div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-icon"></div>
+                    <div class="module-number">MODULE IV</div>
+                    <div class="module-title">THE LIQUID<br>LANGUAGE</div>
+                    <div class="module-figure">E.M. Bounds</div>
+                </div>
+                
+            </div>
+            
+            <div class="modules-includes">
+                <h3>EACH MODULE INCLUDES</h3>
+                <ul>
+                    <li>One cinematic mini-documentary (approximately 10 minutes)</li>
+                    <li>One tactical field manual in premium dark-mode PDF</li>
+                    <li>Deconstructed methodology from original manuscripts and journals</li>
+                    <li>Lifetime access through the secure members area</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 6: Promessa -->
+    <section class="promise-section">
+        <div class="promise-content">
+            <p>This archive was built for the man or woman who has read the books, watched the sermons, and still feels the gap between discipline and power.</p>
+            <p>Not another devotional. Not another podcast. Not another five-minute inspiration that fades by Tuesday.</p>
+            <p>This is forensic theology — the deconstruction of hidden disciplines that turned ordinary men into spiritual weapons.</p>
+            <p>The blueprints exist. The giants left them. Most people never look. You are not most people.</p>
+        </div>
+    </section>
+    
+    <!-- BLOCO 7: CTA Primário -->
+    <section class="cta-section">
+        <div class="container">
+            <!-- SUBSTITUA O HREF ABAIXO PELO LINK DO CHECKOUT DA HOTMART -->
+            <a href="LINK-DO-CHECKOUT-HOTMART" class="cta-button">
+                YES — ADD THE ARCHIVE TO MY ORDER
+            </a>
+            <div class="cta-subtitle">
+                ONE-CLICK UPGRADE · NO NEED TO RE-ENTER PAYMENT DETAILS
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 8: Garantia -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-box">
+                <div class="guarantee-title">30-DAY UNCONDITIONAL GUARANTEE</div>
+                <div class="guarantee-text">
+                    If the archive does not meet your expectations, send one email within 30 days and receive a full refund. No questions. No friction. The work of giants speaks for itself, or it does not.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 9: FAQ -->
+    <section class="faq-section">
+        <div class="faq-title">FREQUENTLY ASKED QUESTIONS</div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What exactly do I get inside the archive?</div>
+            <div class="faq-answer">Four cinematic masterclass documentaries (one per giant), four tactical field manuals in premium dark-mode PDF, lifetime access through the secure members area, and ongoing bonus materials released to founding students.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">When will I access the content?</div>
+            <div class="faq-answer">You receive immediate access to the members area upon purchase. Module I unlocks on May 30, 2026. Subsequent modules unlock progressively, typically ahead of their scheduled dates. You will be notified by email the moment each module becomes available.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Is this content based on the actual writings of these men?</div>
+            <div class="faq-answer">Yes. Every module is built directly from original manuscripts, journals, sermons, and biographical records of Wesley, Tozer, Spurgeon, and Bounds. Sources are cited within each field manual for further study.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">How is this different from just reading their books?</div>
+            <div class="faq-answer">The archive does not replace the books — it deconstructs them. We extract the hidden methodology behind their public ministries and organize it into actionable tactical protocols. What would take years of reading and cross-referencing, the archive delivers in focused, cinematic modules.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">Can I access this on mobile?</div>
+            <div class="faq-answer">Yes. The members area is fully responsive. Documentaries and PDFs are accessible on any device with internet connection.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-question">What if I'm not satisfied?</div>
+            <div class="faq-answer">You have 30 full days to evaluate the archive. If it does not deliver on its promise, send one email and receive a complete refund. No explanation required.</div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 10: CTA Reforço -->
+    <section class="cta-section">
+        <div class="container">
+            <a href="LINK-DO-CHECKOUT-HOTMART" class="cta-button">
+                YES — ADD THE ARCHIVE TO MY ORDER
+            </a>
+            <div class="cta-subtitle">
+                ONE-CLICK UPGRADE · NO NEED TO RE-ENTER PAYMENT DETAILS
+            </div>
+        </div>
+    </section>
+    
+    <!-- BLOCO 11: Link de Recusa -->
+    <section class="decline-section">
+        <!-- SUBSTITUA O HREF ABAIXO PELO LINK DA PÁGINA DE OBRIGADO FINAL -->
+        <a href="LINK-PAGINA-OBRIGADO" class="decline-link">
+            No thanks — continue to my War Room Manual access
+        </a>
+    </section>
+    
+    <!-- BLOCO 12: Rodapé -->
+    <footer>
+        The Revivalist Archive © 2026 · 
+        <a href="mailto:contact@seudominio.com">Contact</a> · 
+        <a href="/terms">Terms</a> · 
+        <a href="/privacy">Privacy</a>
+    </footer>
+    
+    <!-- Script para FAQ accordion -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasActive = item.classList.contains('active');
+                
+                // Fecha todos os outros
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Abre o clicado (se não estava aberto)
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
