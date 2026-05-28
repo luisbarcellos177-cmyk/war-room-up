@@ -114,6 +114,18 @@
             border: 0;
         }
         
+        /* Cobre o topo do player: bloqueia o clique no titulo/canal (evita ir ao YouTube) */
+        .yt-title-cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 5;
+            background: transparent;
+            cursor: default;
+        }
+        
         /* === BLOCO 4 — Título do Produto === */
         .product-title {
             text-align: center;
@@ -499,12 +511,15 @@
     <section class="video-section">
         <div class="container">
             <div class="video-wrapper">
-                <!-- SUBSTITUA O SRC ABAIXO PELO LINK DO SEU VSL -->
                 <iframe 
-                    src="https://www.youtube.com/embed/SEU-VIDEO-ID?rel=0&modestbranding=1&showinfo=0" 
+                    src="https://www.youtube-nocookie.com/embed/_vN027Zc8uU?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=1&disablekb=0" 
+                    title=""
+                    frameborder="0"
                     allowfullscreen
-                    allow="autoplay; encrypted-media">
+                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture">
                 </iframe>
+                <!-- Cobre a barra superior do YouTube (titulo) sem bloquear os controles inferiores -->
+                <div class="yt-title-cover"></div>
             </div>
         </div>
     </section>
