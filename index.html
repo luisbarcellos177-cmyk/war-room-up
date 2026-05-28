@@ -126,6 +126,48 @@
             cursor: default;
         }
         
+        .vsl-sound-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.55);
+            cursor: pointer;
+            text-align: center;
+            transition: opacity 0.3s ease;
+        }
+        .vsl-sound-inner {
+            font-family: 'Inter', sans-serif;
+            color: #F5F2EB;
+            padding: 24px;
+        }
+        .vsl-sound-icon {
+            font-size: 54px;
+            margin-bottom: 14px;
+            animation: vslPulse 1.6s infinite;
+        }
+        .vsl-sound-text {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .vsl-sound-sub {
+            font-size: 15px;
+            color: var(--accent-gold);
+            margin-top: 6px;
+            font-weight: 600;
+        }
+        @keyframes vslPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.12); opacity: 0.75; }
+        }
+        
         /* === BLOCO 4 — Título do Produto === */
         .product-title {
             text-align: center;
@@ -511,8 +553,8 @@
     <section class="video-section">
         <div class="container">
             <div class="video-wrapper">
-                <iframe 
-                    src="https://www.youtube-nocookie.com/embed/_vN027Zc8uU?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=1&disablekb=0" 
+                <iframe id="vslPlayer" 
+                    src="https://www.youtube-nocookie.com/embed/_vN027Zc8uU?autoplay=1&mute=1&controls=1&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=1&disablekb=0&enablejsapi=1" 
                     title=""
                     frameborder="0"
                     allowfullscreen
@@ -520,6 +562,14 @@
                 </iframe>
                 <!-- Cobre a barra superior do YouTube (titulo) sem bloquear os controles inferiores -->
                 <div class="yt-title-cover"></div>
+                <!-- Overlay: clique para ativar o som -->
+                <div class="vsl-sound-overlay" id="vslSoundOverlay">
+                    <div class="vsl-sound-inner">
+                        <div class="vsl-sound-icon">&#128266;</div>
+                        <div class="vsl-sound-text">Seu video ja comecou</div>
+                        <div class="vsl-sound-sub">Clique para ativar o som</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -689,5 +739,37 @@
         });
     </script>
     
+
+    <!-- Controle de audio do VSL (YouTube IFrame API) -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        var vslYTPlayer;
+        function onYouTubeIframeAPIReady() {
+            vslYTPlayer = new YT.Player("vslPlayer", {
+                events: {
+                    "onReady": function(e) {
+                        e.target.mute();
+                        e.target.playVideo();
+                    }
+                }
+            });
+        }
+        (function() {
+            var overlay = document.getElementById("vslSoundOverlay");
+            function ativarSom() {
+                try {
+                    if (vslYTPlayer && vslYTPlayer.unMute) {
+                        vslYTPlayer.unMute();
+                        vslYTPlayer.setVolume(100);
+                        vslYTPlayer.playVideo();
+                    }
+                } catch (err) {}
+                if (overlay) { overlay.style.display = "none"; }
+            }
+            if (overlay) {
+                overlay.addEventListener("click", ativarSom);
+            }
+        })();
+    </script>
 </body>
 </html>
