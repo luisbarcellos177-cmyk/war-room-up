@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Welcome — Your Access is Confirmed</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0A0A0A;
+            --bg-secondary: #141414;
+            --text-primary: #F5F2EB;
+            --text-secondary: #888888;
+            --accent-gold: #C9A961;
+            --accent-red: #8B1A1A;
+            --border-subtle: #2A2A2A;
+        }
+        
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Lora', Georgia, serif;
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Container Principal */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* Confirmação Visual no Topo */
+        .confirmation-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 40px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(201, 169, 97, 0.3);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(201, 169, 97, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(201, 169, 97, 0.5); }
+        }
+        
+        .confirmation-icon::before {
+            content: "✓";
+            font-size: 48px;
+            color: var(--accent-gold);
+            font-weight: 300;
+        }
+        
+        /* Título Principal */
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 900;
+            letter-spacing: 0.04em;
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        
+        .main-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(20px, 2.5vw, 26px);
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        /* Bloco de Acesso */
+        .access-block {
+            background-color: var(--bg-secondary);
+            border-left: 3px solid var(--accent-gold);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .access-label {
+            font-family: 'Cinzel', serif;
+            font-size: 12px;
+            letter-spacing: 0.25em;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        
+        .access-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: 0.04em;
+        }
+        
+        .access-description {
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        
+        /* Botão de Acesso */
+        .access-button {
+            display: inline-block;
+            background-color: var(--accent-red);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 16px 36px;
+            text-decoration: none;
+            border: 2px solid var(--accent-red);
+            transition: all 0.3s ease;
+        }
+        
+        .access-button:hover {
+            background-color: #A02020;
+            border-color: #A02020;
+            transform: translateY(-2px);
+        }
+        
+        /* Bloco de Próximos Passos */
+        .next-steps {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 40px;
+        }
+        
+        .next-steps h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+            margin-bottom: 24px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        .step-number {
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 40px;
+            letter-spacing: 0.1em;
+        }
+        
+        .step-text {
+            flex: 1;
+            color: var(--text-primary);
+        }
+        
+        .step-text strong {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+        
+        /* Mensagem Final */
+        .final-message {
+            text-align: center;
+            padding: 60px 0 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 20px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            margin-top: 40px;
+        }
+        
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px 24px;
+            border-top: 1px solid var(--border-subtle);
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+        
+        footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin: 0 8px;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            .access-block {
+                padding: 28px 20px;
+            }
+            
+            .step-item {
+                flex-direction: column;
+            }
+            
+            .step-number {
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        
+        <!-- Ícone de Confirmação -->
+        <div class="confirmation-icon"></div>
+        
+        <!-- Título Principal -->
+        <h1 class="main-title">YOU ARE INSIDE.</h1>
+        <p class="main-subtitle">The threshold has been crossed.</p>
+        
+        <!-- Bloco de Acesso: Manual -->
+        <div class="access-block">
+            <div class="access-label">YOUR ACCESS</div>
+            <div class="access-title">The War Room Manual</div>
+            <div class="access-description">
+                Your tactical battle plan for the next 30 days is now available. Access details have been sent to your email. The members area contains the manual, your bonus materials, and any progressive content released to founding students.
+            </div>
+            <!-- SUBSTITUA O LINK ABAIXO PELO LINK DA SUA ÁREA DE MEMBROS HOTMART -->
+            <a href="https://hotmart.com/seu-link-membros" class="access-button">
+                ENTER THE MEMBERS AREA
+            </a>
+        </div>
+        
+        <!-- Próximos Passos -->
+        <div class="next-steps">
+            <h3>NEXT STEPS</h3>
+            
+            <div class="step-item">
+                <div class="step-number">01</div>
+                <div class="step-text">
+                    Check your <strong>email inbox</strong> for the welcome message with full access details. If you don't see it within 5 minutes, check spam or promotions.
+                </div>
+            </div>
+            
+            <div class="step-item">
+                <div class="step-number">02</div>
+                <div class="step-text">
+                    Click <strong>"Enter the Members Area"</strong> above to access your content immediately. Bookmark the page for easy return.
+                </div>
+            </div>
+            
+            <div class="step-item">
+                <div class="step-number">03</div>
+                <div class="step-text">
+                    Begin with <strong>Day 1 of the manual</strong>. The protocol is designed sequentially. Do not skip ahead.
+                </div>
+            </div>
+            
+            <div class="step-item">
+                <div class="step-number">04</div>
+                <div class="step-text">
+                    For any questions, reach out at <strong>contact@yourdomain.com</strong>. Response within 24 hours.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mensagem Final -->
+        <div class="final-message">
+            "The fire is waiting. The work begins now."
+        </div>
+        
+    </div>
+    
+    <!-- Rodapé -->
+    <footer>
+        The Revivalist Archive © 2026 · 
+        <a href="mailto:contact@yourdomain.com">Contact</a> · 
+        <a href="/terms">Terms</a> · 
+        <a href="/privacy">Privacy</a>
+    </footer>
+    
+</body>
+</html>
