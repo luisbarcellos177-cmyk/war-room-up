@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <title>The Revivalist Archive — Founding Access</title>
     
-    <!-- Google Fonts: Cinzel para títulos, Lora para corpo -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;500;600&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
@@ -98,7 +98,7 @@
             max-width: 900px;
             margin: 0 auto;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
@@ -157,6 +157,8 @@
             padding: 32px 20px;
             text-align: center;
             transition: border-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .module-card:hover {
@@ -164,16 +166,39 @@
             transform: translateY(-4px);
         }
         
-        .module-icon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 20px;
-            background-color: var(--accent-gold);
-            opacity: 0.15;
+        .module-portrait {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 24px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 0 30px rgba(201, 169, 97, 0.2);
+        }
+        
+        .module-portrait img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(40%) saturate(80%) brightness(85%) contrast(110%);
+            transition: filter 0.4s ease;
+        }
+        
+        .module-card:hover .module-portrait img {
+            filter: sepia(20%) saturate(100%) brightness(95%) contrast(115%);
+        }
+        
+        .module-portrait::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
         }
         
         .module-number {
@@ -181,7 +206,7 @@
             font-size: 12px;
             letter-spacing: 0.2em;
             color: var(--accent-gold);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             font-weight: 700;
         }
         
@@ -198,8 +223,9 @@
         .module-figure {
             font-family: 'Cormorant Garamond', serif;
             font-style: italic;
-            font-size: 14px;
-            color: var(--text-secondary);
+            font-size: 15px;
+            color: var(--accent-gold);
+            opacity: 0.8;
         }
         
         .modules-includes {
@@ -265,42 +291,40 @@
             margin-bottom: 0;
         }
         
-        /* === BLOCO 7 — CTA Primário === */
-        .cta-section {
+        /* === BLOCO 7 — Container do Widget Hotmart === */
+        .checkout-section {
             text-align: center;
             padding: 80px 24px 40px;
         }
         
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent-red);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(15px, 2vw, 18px);
+        .checkout-intro {
+            margin-bottom: 40px;
+        }
+        
+        .checkout-intro h3 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(20px, 3vw, 28px);
             font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 24px 56px;
-            text-decoration: none;
-            border: 2px solid var(--accent-red);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(139, 26, 26, 0.4);
+            letter-spacing: 0.1em;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
         }
         
-        .cta-button:hover {
-            background-color: var(--accent-red-hover);
-            border-color: var(--accent-red-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(139, 26, 26, 0.6);
-        }
-        
-        .cta-subtitle {
-            margin-top: 18px;
-            font-family: 'Inter', sans-serif;
-            font-size: 13px;
+        .checkout-intro p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
             color: var(--text-secondary);
-            letter-spacing: 0.08em;
+        }
+        
+        /* Container que vai receber o widget da Hotmart */
+        #hotmart-sales-funnel {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 4px;
         }
         
         /* === BLOCO 8 — Garantia === */
@@ -401,25 +425,6 @@
             padding-top: 18px;
         }
         
-        /* === BLOCO 11 — Link de Recusa === */
-        .decline-section {
-            text-align: center;
-            padding: 40px 24px 60px;
-        }
-        
-        .decline-link {
-            font-family: 'Lora', serif;
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-            transition: color 0.3s ease;
-        }
-        
-        .decline-link:hover {
-            color: var(--text-primary);
-        }
-        
         /* === BLOCO 12 — Rodapé === */
         footer {
             text-align: center;
@@ -461,18 +466,16 @@
                 padding: 60px 24px;
             }
             
-            .cta-button {
-                padding: 20px 36px;
-                font-size: 14px;
-                letter-spacing: 0.1em;
-            }
-            
             .guarantee-box {
                 padding: 36px 24px;
             }
             
             .faq-section {
                 padding: 60px 24px;
+            }
+            
+            #hotmart-sales-funnel {
+                padding: 12px;
             }
         }
     </style>
@@ -497,9 +500,6 @@
         <div class="container">
             <div class="video-wrapper">
                 <!-- SUBSTITUA O SRC ABAIXO PELO LINK DO SEU VSL -->
-                <!-- Para YouTube: https://www.youtube.com/embed/SEU-VIDEO-ID?rel=0&modestbranding=1 -->
-                <!-- Para Vimeo: https://player.vimeo.com/video/SEU-VIDEO-ID -->
-                <!-- Para Panda Video: use o código embed fornecido pela plataforma -->
                 <iframe 
                     src="https://www.youtube.com/embed/SEU-VIDEO-ID?rel=0&modestbranding=1&showinfo=0" 
                     allowfullscreen
@@ -523,28 +523,36 @@
             <div class="modules-grid">
                 
                 <div class="module-card">
-                    <div class="module-icon"></div>
+                    <div class="module-portrait">
+                        <img src="images/wesley.jpg" alt="John Wesley">
+                    </div>
                     <div class="module-number">MODULE I</div>
                     <div class="module-title">THE METHOD<br>OF FIRE</div>
                     <div class="module-figure">John Wesley</div>
                 </div>
                 
                 <div class="module-card">
-                    <div class="module-icon"></div>
+                    <div class="module-portrait">
+                        <img src="images/tozer.jpg" alt="A.W. Tozer">
+                    </div>
                     <div class="module-number">MODULE II</div>
                     <div class="module-title">THE ANATOMY<br>OF A PROPHET</div>
                     <div class="module-figure">A.W. Tozer</div>
                 </div>
                 
                 <div class="module-card">
-                    <div class="module-icon"></div>
+                    <div class="module-portrait">
+                        <img src="images/spurgeon.jpg" alt="Charles Spurgeon">
+                    </div>
                     <div class="module-number">MODULE III</div>
                     <div class="module-title">THE WEIGHT<br>OF THE PULPIT</div>
                     <div class="module-figure">Charles Spurgeon</div>
                 </div>
                 
                 <div class="module-card">
-                    <div class="module-icon"></div>
+                    <div class="module-portrait">
+                        <img src="images/bounds.jpg" alt="E.M. Bounds">
+                    </div>
                     <div class="module-number">MODULE IV</div>
                     <div class="module-title">THE LIQUID<br>LANGUAGE</div>
                     <div class="module-figure">E.M. Bounds</div>
@@ -574,16 +582,22 @@
         </div>
     </section>
     
-    <!-- BLOCO 7: CTA Primário -->
-    <section class="cta-section">
+    <!-- BLOCO 7: WIDGET HOTMART (Sales Funnel) -->
+    <section class="checkout-section">
         <div class="container">
-            <!-- SUBSTITUA O HREF ABAIXO PELO LINK DO CHECKOUT DA HOTMART -->
-            <a href="LINK-DO-CHECKOUT-HOTMART" class="cta-button">
-                YES — ADD THE ARCHIVE TO MY ORDER
-            </a>
-            <div class="cta-subtitle">
-                ONE-CLICK UPGRADE · NO NEED TO RE-ENTER PAYMENT DETAILS
+            <div class="checkout-intro">
+                <h3>CROSS THE THRESHOLD</h3>
+                <p>One click. Same payment method. Lifetime access.</p>
             </div>
+            
+            <!-- HOTMART - Sales Funnel Widget -->
+            <div id="hotmart-sales-funnel"></div>
+            <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+            <script>
+                checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+            </script>
+            <!-- HOTMART - Sales Funnel Widget -->
+            
         </div>
     </section>
     
@@ -634,26 +648,6 @@
         </div>
     </section>
     
-    <!-- BLOCO 10: CTA Reforço -->
-    <section class="cta-section">
-        <div class="container">
-            <a href="LINK-DO-CHECKOUT-HOTMART" class="cta-button">
-                YES — ADD THE ARCHIVE TO MY ORDER
-            </a>
-            <div class="cta-subtitle">
-                ONE-CLICK UPGRADE · NO NEED TO RE-ENTER PAYMENT DETAILS
-            </div>
-        </div>
-    </section>
-    
-    <!-- BLOCO 11: Link de Recusa -->
-    <section class="decline-section">
-        <!-- SUBSTITUA O HREF ABAIXO PELO LINK DA PÁGINA DE OBRIGADO FINAL -->
-        <a href="LINK-PAGINA-OBRIGADO" class="decline-link">
-            No thanks — continue to my War Room Manual access
-        </a>
-    </section>
-    
     <!-- BLOCO 12: Rodapé -->
     <footer>
         The Revivalist Archive © 2026 · 
@@ -669,12 +663,10 @@
                 const item = question.parentElement;
                 const wasActive = item.classList.contains('active');
                 
-                // Fecha todos os outros
                 document.querySelectorAll('.faq-item').forEach(i => {
                     i.classList.remove('active');
                 });
                 
-                // Abre o clicado (se não estava aberto)
                 if (!wasActive) {
                     item.classList.add('active');
                 }
